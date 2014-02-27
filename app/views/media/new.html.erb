@@ -1,0 +1,11 @@
+<%- model_class = Medium -%>
+<div class="page-header">
+  <h1>New Media</h1>
+</div>
+
+<% if @medium.rotten_id.blank? %>
+  <%= render :partial => 'form' %>
+<% else %>
+  <%= render :partial => 'form_rotten' %>
+<% end %>
+

@@ -1,0 +1,70 @@
+<%- model_class = Medium -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <p>
+    Download:
+    <%= link_to "CSV", media_path(format: "csv") %>
+  </p>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:runtime) %></th>
+      <th><%= model_class.human_attribute_name(:genre) %></th>
+      <th><%= model_class.human_attribute_name(:platform) %></th>
+      <th><%= model_class.human_attribute_name(:director) %></th>
+      <th><%= model_class.human_attribute_name(:cast) %></th>
+      <th><%= model_class.human_attribute_name(:release_date) %></th>
+      <th><%= model_class.human_attribute_name(:critic_rating) %></th>
+      <th><%= model_class.human_attribute_name(:audience_rating) %></th>
+      <th><%= model_class.human_attribute_name(:foreign) %></th>
+      <th><%= model_class.human_attribute_name(:watched) %></th>
+      <th><%= model_class.human_attribute_name(:hassan_rating) %></th>
+      <th><%= model_class.human_attribute_name(:own) %></th>
+      <th><%= model_class.human_attribute_name(:summary) %></th>
+      <th><%= model_class.human_attribute_name(:trailer_link) %></th>
+      <th><%= model_class.human_attribute_name(:movie_link) %></th>
+      <th><%= model_class.human_attribute_name(:poster_link) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @media.each do |medium| %>
+      <tr>
+        <td><%= link_to medium.id, medium_path(medium) %></td>
+        <td><%= medium.title %></td>
+        <td><%= medium.runtime%> Minutes</td>
+        <td><%= medium.genre %></td>
+        <td><%= medium.platform %></td>
+        <td><%= medium.director %></td>
+        <td><%= medium.cast %></td>
+        <td><%= medium.release_date %></td>
+        <td><%= medium.critic_rating %></td>
+        <td><%= medium.audience_rating %></td>
+        <td><%= medium.foreign %></td>
+        <td><%= medium.watched %></td>
+        <td><%= medium.hassan_rating %></td>
+        <td><%= medium.own %></td>
+        <td><%= medium.summary %></td>
+        <td><%= medium.trailer_link %></td>
+        <td><%= medium.movie_link %></td>
+        <td><%= medium.poster_link %></td>
+        <td><%=l medium.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_medium_path(medium), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      medium_path(medium),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to("new", {:action => 'add'}, :class => 'btn btn-primary') %>

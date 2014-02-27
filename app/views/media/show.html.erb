@@ -1,0 +1,55 @@
+<%- model_class = Medium -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dd><%= @medium.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:runtime) %>:</strong></dt>
+  <dd><%= @medium.runtime %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:genre) %>:</strong></dt>
+  <dd><%= @medium.genre %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:platform) %>:</strong></dt>
+  <dd><%= @medium.platform %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:director) %>:</strong></dt>
+  <dd><%= @medium.director %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cast) %>:</strong></dt>
+  <dd><%= @medium.cast %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:release_date) %>:</strong></dt>
+  <dd><%= @medium.release_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:critic_rating) %>:</strong></dt>
+  <dd><%= @medium.critic_rating %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:audience_rating) %>:</strong></dt>
+  <dd><%= @medium.audience_rating %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:foreign) %>:</strong></dt>
+  <dd><%= @medium.foreign %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:summary) %>:</strong></dt>
+  <dd><%= @medium.summary %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:trailer_link) %>:</strong></dt>
+  <dd><%= @medium.trailer_link %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:movie_link) %>:</strong></dt>
+  <dd><%= @medium.movie_link %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:poster_link) %>:</strong></dt>
+  <dd><%= @medium.poster_link %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:hassan_rating) %>:</strong></dt>
+  <dd><%= @medium.hassan_rating %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:watched) %>:</strong></dt>
+  <dd><%= @medium.watched %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:own) %>:</strong></dt>
+  <dd><%= @medium.own %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:rotten_id) %>:</strong></dt>
+  <dd><%= @medium.rotten_id %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              media_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_medium_path(@medium), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              medium_path(@medium),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
