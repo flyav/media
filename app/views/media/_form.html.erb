@@ -1,0 +1,116 @@
+<%= form_for @medium, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, {:value => @medium.title}%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :watched, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :watched, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :own, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :own, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :runtime, "Runtime in minutes", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :runtime, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :genre, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :genre, {:value => ""} %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :platform, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.radio_button :platform, "movie", :class => 'text_field radio inline' %>
+	  <%= label_tag :platform_movie, "Movie", :class => 'radio inline' %>
+	  <%= f.radio_button :platform, "televison", :class => 'text_field radio inline' %>
+	  <%= label_tag :platform_television, "Television", :class => 'radio inline'%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :director, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :director, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :cast, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cast, {:value => ""} %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :release_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_field :release_date, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :critic_rating, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :critic_rating, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :audience_rating, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :audience_rating, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :foreign, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :foreign, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :summary, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :summary, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :trailer_link, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :trailer_link, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :movie_link, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :movie_link, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :poster_link, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :poster_link, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :hassan_rating, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select(:hassan_rating, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], :include_blank => true, :class => 'text_field') %>
+    </div>
+  </div>
+  
+
+	  
+
+  <div class="form-actions">
+    <%= f.submit "Update Media", :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                media_path, :class => 'btn' %>
+  </div>
+<% end %>
