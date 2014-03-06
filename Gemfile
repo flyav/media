@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -39,6 +40,7 @@ gem "rottentomatoes"
 #gem 'texticle', require: 'texticle/rails'
 gem 'textacular', require: 'textacular/rails'
 gem 'bootstrap-will_paginate'
+gem 'rails_12factor'
 
 
 # Use ActiveModel has_secure_password
