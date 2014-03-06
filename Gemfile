@@ -40,7 +40,7 @@ gem "rottentomatoes"
 #gem 'texticle', require: 'texticle/rails'
 gem 'textacular', require: 'textacular/rails'
 gem 'bootstrap-will_paginate'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 
 # Use ActiveModel has_secure_password

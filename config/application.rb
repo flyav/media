@@ -1,3 +1,4 @@
+
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -23,6 +24,8 @@ module Media
     # config.i18n.default_locale = :de
   end
 end
+
+
 
 
 
