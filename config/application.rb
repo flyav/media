@@ -22,7 +22,7 @@ module Media
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
   end
-
+end
 
 
 # via https://github.com/sstephenson/sprockets/issues/347#issuecomment-25543201
@@ -40,4 +40,3 @@ config.assets.precompile.push(Proc.new do |path|
 end)
 
 
-end
