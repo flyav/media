@@ -1,3 +1,5 @@
+require 'textacular/searchable'
+
 class Medium < ActiveRecord::Base
   
 
@@ -15,6 +17,8 @@ class Medium < ActiveRecord::Base
 
   scope :watched, -> watched { where(watched: watched) }
   scope :own, -> own { where(own: own) }
+  
+  extend Searchable(:title, :genre, :director, :cast)
 
   def self.to_csv
     CSV.generate do |csv|
