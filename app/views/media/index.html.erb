@@ -37,11 +37,19 @@
       <tr>
         <td><%= link_to medium.id, medium_path(medium) %></td>
         <td><%= medium.title %></td>
-        <td><%= medium.runtime%> Minutes</td>
-        <td><%= medium.genre %></td>
+        <td><%= medium.runtime %> Minutes</td>
+        <td>
+          <% if medium.genre.blank? %> no
+          <% else %> yes
+          <% end %>
+        </td>
         <td><%= medium.platform %></td>
         <td><%= medium.director %></td>
-        <td><%= medium.cast %></td>
+        <td>
+          <% if medium.cast.blank? %> no
+          <% else %> yes
+          <% end %>
+        </td>
         <td><%= medium.release_date %></td>
         <td><%= medium.critic_rating %></td>
         <td><%= medium.audience_rating %></td>
@@ -49,7 +57,11 @@
         <td><%= medium.watched %></td>
         <td><%= medium.hassan_rating %></td>
         <td><%= medium.own %></td>
-        <td><%= medium.summary %></td>
+        <td>
+          <% if medium.summary.blank? %> no
+          <% else %> yes
+          <% end %>
+        </td>
         <td><%= medium.trailer_link %></td>
         <td><%= medium.movie_link %></td>
         <td><%= medium.poster_link %></td>
@@ -67,7 +79,5 @@
     <% end %>
   </tbody>
 </table>
-
-<%= will_paginate @media %>
 
 <%= link_to("new", {:action => 'add'}, :class => 'btn btn-primary') %>
