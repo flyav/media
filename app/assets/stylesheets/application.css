@@ -12,6 +12,7 @@
  *= require_tree .
  */
 
+
 #error_title { color: red;}
 
 .direction {
@@ -40,4 +41,4 @@ dd {
     height: auto;
 }
 
-  
+#authorize { float: right}

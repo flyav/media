@@ -7,11 +7,6 @@
   </p>
 </div>
 
-<%= form_tag(media_path, method: "get", :class => "form-inline") do %>
-  <%= text_field_tag :query, params[:query], :class => 'text-field' %>
-  <%= submit_tag "Search Database", :name => nil, :class => 'btn btn-primary' %>
-<% end %>  
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -72,7 +67,6 @@
     <% end %>
   </tbody>
 </table>
-
 
 <%= will_paginate @media %>
 

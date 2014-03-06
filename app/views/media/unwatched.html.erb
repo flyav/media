@@ -4,6 +4,7 @@
   <p>
     <%= text_field_tag :query, params[:query], :class => 'text-field' %>
     <%= submit_tag "Search Unwatched", :name => nil, :class => 'btn btn-primary' %>
+    <%= link_to "Clear", unwatched_path, :class => 'btn' %>
   </p>
 <% end %>  
 
@@ -21,6 +22,7 @@
       <th><%= sortable "critic_rating" %></th>
       <th><%= sortable "audience_rating" %></th>
       <th><%= model_class.human_attribute_name(:foreign) %></th>
+      <th><%= model_class.human_attribute_name(:summary) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -38,6 +40,11 @@
         <td><%= medium.audience_rating %></td>
         <td><%= medium.foreign %></td>
         <td>
+          <% if medium.summary.blank? %> no
+          <% else %> yes
+          <% end %>
+        </td>
+        <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_medium_path(medium), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -53,6 +60,6 @@
 </div>
 
 <%= will_paginate @media %>
- 
 
-<%= link_to("Home", {:action => 'index'}, :class => 'btn btn-primary') %>
+
+<%= link_to("Home", media_path, :class => 'btn btn-primary') %>

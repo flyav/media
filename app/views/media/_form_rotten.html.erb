@@ -6,6 +6,7 @@
     </div>
   </div>
   <div class="control-group">
+
     <%= f.label :watched, :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :watched, :class => 'text_field' %>
@@ -18,6 +19,7 @@
     </div>
   </div>
   <div class="control-group">
+
     <%= f.label :runtime, "Runtime in minutes", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :runtime, {:value => @rotten.runtime} %>
@@ -39,6 +41,7 @@
     </div>
   </div>
   <div class="control-group">
+
     <% if @rotten.abridged_directors.nil? %>
       <%= f.label :director, :class => 'control-label' %>
       <div class="controls">
@@ -50,6 +53,7 @@
         <%= f.text_field :director, {:value => @rotten.abridged_directors.collect(&:name).to_s[1..-2].gsub(/["]/, "")} %>
       </div>
     <% end %>
+
   </div>
   <div class="control-group">
     <%= f.label :cast, :class => 'control-label' %>
@@ -90,7 +94,9 @@
   <div class="control-group">
     <%= f.label :trailer_link, :class => 'control-label' %>
     <div class="controls">
+
       <%= f.text_field :trailer_link, {:value => @rotten.links.clips} %>
+
     </div>
   </div>
   <div class="control-group">
@@ -111,7 +117,7 @@
       <%= f.select(:hassan_rating, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], :include_blank => true, :class => 'text_field') %>
     </div>
   </div>
-  
+
   <%= f.hidden_field :rotten_id, :value => @rotten.id %>
 
   <div class="form-actions">

@@ -36,11 +36,13 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 gem "rottentomatoes"
-gem 'texticle', require: 'texticle/rails'
+#gem 'texticle', require: 'texticle/rails'
+gem 'textacular', require: 'textacular/rails'
 gem 'bootstrap-will_paginate'
 
+
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt-ruby'
 
 # Use unicorn as the app server
 # gem 'unicorn'

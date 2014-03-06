@@ -1,5 +1,6 @@
 class Medium < ActiveRecord::Base
   
+
   #serialize :genre, Array
   #serialize :cast, Array    
 
@@ -7,6 +8,8 @@ class Medium < ActiveRecord::Base
   #before_validation :update_cast
   
   validates :title, presence: true, uniqueness: { case_sensitive: false }
+
+
   #validates :own, presence: true
   #validates :watched, presence: true
 
@@ -42,4 +45,5 @@ class Medium < ActiveRecord::Base
     #self.cast = self.cast.split(',').collect(&:strip)
    # end
   #end
-end
+
+ end

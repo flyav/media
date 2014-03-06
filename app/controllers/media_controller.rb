@@ -1,6 +1,8 @@
 class MediaController < ApplicationController
   include RottenTomatoes
   helper_method :sort_column, :sort_direction
+  before_filter :authorize, only: [:edit, :update, :create, :new]
+
   
   before_action :set_medium, only: [:show, :edit, :update, :destroy]
 
@@ -8,7 +10,7 @@ class MediaController < ApplicationController
   # GET /media
   # GET /media.json
   def index
-    @media = Medium.all.paginate(:page => params[:page], :per_page => 100).text_search(params[:query])
+    @media = Medium.all.paginate(:page => params[:page], :per_page => 100)
     respond_to do |format|
       format.html
       format.csv { send_data @media.to_csv }
@@ -54,10 +56,11 @@ class MediaController < ApplicationController
     
     respond_to do |format|
       if @medium.save
-        format.html { redirect_to @medium, notice: 'Medium was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @medium }
+        format.html { redirect_to add_path, notice: 'Medium was successfully created.' }
+        format.json { render action: 'add', status: :created, location: @medium }
       else
         format.html { render action: 'add' }
+        format.html { render action: 'new' }
         format.json { render json: @medium.errors, status: :unprocessable_entity }
       end
     end
@@ -95,7 +98,6 @@ class MediaController < ApplicationController
   def unwatched
     #list of unwatched owned movies
     @media = Medium.paginate(:page => params[:page], :per_page => 10).watched(false).own(true).order(sort_column + " " + sort_direction).text_search(params[:query])
-      
   end
 
   def view
@@ -123,6 +125,7 @@ class MediaController < ApplicationController
       params.require(:medium).permit(:title, :runtime, :genre, :platform, :director, :cast, :release_date, :critic_rating, :audience_rating, :foreign, :summary, :trailer_link, :movie_link, :rotten_id, :poster_link, :watched, :hassan_rating, :own)
     end
 
+
     def sort_column
       Medium.column_names.include?(params[:sort]) ? params[:sort]  : "critic_rating"
     end
@@ -133,6 +136,8 @@ class MediaController < ApplicationController
 
 
 end
+
+
 
 
 

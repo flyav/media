@@ -1,3 +1,4 @@
+
 <% if @medium.errors.any? %>
   <div id="error_explanation">
     <h4 id="error_title"><%= pluralize(@medium.errors.count, "Error") %> Prohibited This Post From Being Saved:</h4>
@@ -8,7 +9,6 @@
       </ul>
   </div>
 <% end %>
-
 
 <%- model_class = Medium -%>
 <div class="page-header">
