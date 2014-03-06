@@ -1,0 +1,64 @@
+<%- model_class = Medium -%>
+
+<%= form_tag(view_path, method: "get", :class => "form-inline") do %>
+  <p>
+    <%= text_field_tag :query, params[:query], :class => 'text-field' %>
+    <%= submit_tag "Search Collection", :name => nil, :class => 'btn btn-primary' %>
+    <%= link_to "Clear", view_path, :class => 'btn' %>
+  </p>
+<% end %>  
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= sortable "title" %></th>
+      <th>Poster</th>
+      <th><%= sortable "runtime" %></th>
+      <th><%= model_class.human_attribute_name(:genre) %></th>
+      <th><%= model_class.human_attribute_name(:director) %></th>
+      <th><%= model_class.human_attribute_name(:cast) %></th>
+      <th><%= sortable "release_date" %></th>
+      <th><%= sortable "critic_rating" %></th>
+      <th><%= sortable "audience_rating" %></th>
+      <th><%= sortable "hassan_rating" %></th>
+      <th><%= model_class.human_attribute_name(:foreign) %></th>
+      <th><%= model_class.human_attribute_name(:summary) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @media.each do |medium| %>
+      <tr>
+        <td><%= link_to medium.title, medium_path(medium) %></td>
+        <td><img src="<%= medium.poster_link %>" class="table_poster"></td>
+        <td><%= medium.runtime%> Minutes</td>
+        <td><%= medium.genre %></td>
+        <td><%= medium.director %></td>
+        <td><%= medium.cast %></td>
+        <td><%= medium.release_date %></td>
+        <td><%= medium.critic_rating %></td>
+        <td><%= medium.audience_rating %></td>
+        <td><%= medium.hassan_rating %></td>
+        <td><%= medium.foreign %></td>
+        <td>
+          <% if medium.summary.blank? %> no
+          <% else %> yes
+          <% end %>
+        </td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_medium_path(medium), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      medium_path(medium),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<%= will_paginate @media %>

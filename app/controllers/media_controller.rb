@@ -102,7 +102,7 @@ class MediaController < ApplicationController
 
   def view
     # Look at the all owned in pretty format
-    @media = Medium.own(true)
+    @media = Medium.paginate(:page => params[:page], :per_page => 10).own(true).order(sort_column + " " + sort_direction).text_search(params[:query])
   end
   
   def watch

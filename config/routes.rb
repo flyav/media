@@ -10,6 +10,7 @@ Media::Application.routes.draw do
   resources :users
 
   get '/unwatched', to: 'media#unwatched', as: :unwatched
+  get '/view', to: 'media#view', as: :view
   get "media/add", as: :add
   post 'media/select'
   post 'media/new'
