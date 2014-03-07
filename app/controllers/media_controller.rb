@@ -97,12 +97,12 @@ class MediaController < ApplicationController
 
   def unwatched
     #list of unwatched owned movies
-    @media = Medium.paginate(:page => params[:page], :per_page => 10).watched(false).own(true).order(sort_column + " " + sort_direction).text_search(params[:query])
+    @media = Medium.paginate(:page => params[:page], :per_page => 25).watched(false).own(true).order(sort_column + " " + sort_direction, title: :asc).text_search(params[:query])
   end
 
   def view
     # Look at the all owned in pretty format
-    @media = Medium.paginate(:page => params[:page], :per_page => 10).own(true).order(sort_column + " " + sort_direction).text_search(params[:query])
+    @media = Medium.paginate(:page => params[:page], :per_page => 25).own(true).order(sort_column + " " + sort_direction, title: :asc).text_search(params[:query])
   end
   
   def watch
