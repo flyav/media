@@ -1,7 +1,7 @@
 class MediaController < ApplicationController
   include RottenTomatoes
   helper_method :sort_column, :sort_direction
-  before_filter :authorize, only: [:edit, :update, :create, :new]
+  before_filter :authorize, only: [:edit, :update, :create, :new, :destroy]
 
   
   before_action :set_medium, only: [:show, :edit, :update, :destroy]
